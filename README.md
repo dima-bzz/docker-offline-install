@@ -6,7 +6,7 @@ Usually you would install Docker using package manager, but that of course requi
 One solution is to mirror the entire repository, but because of its size, this solution is not practical.
 
 Thankfully, Docker manages their own repository for the Docker-Engine, including direct dependencies (see prerequisites).
-Using a separate internet connected (online) computer, you can download the Docker repository, copy it using some media (i.e. cdrom, usb) to the target computer / server and install it using apt-get.
+Using a separate internet connected (online) computer, you can download the Docker repository, copy it using some media (i.e. cdrom, usb) to the target computer / server and install it using package manager.
 
 The included scripts utilize [**apt-mirror**](http://apt-mirror.github.com) for downloading the Docker repository.
 
@@ -14,12 +14,17 @@ The official Docker documentation for [installing Docker on Ubuntu](https://docs
 
 The official Docker documentation for [installing Docker on Debian](https://docs.docker.com/engine/install/debian/) was also helpful writing these scripts. Make sure you comply to Docker's prerequisites before trying to install on Debian.
 
+The official Docker documentation for [installing Docker on Centos](https://docs.docker.com/engine/install/centos/) was also helpful writing these scripts. Make sure you comply to Docker's prerequisites before trying to install on Centos.
+
 ## Prerequisites:
 * Check Docker's [dependencies](https://docs.docker.com/engine/installation/binaries/#check-runtime-dependencies)
   to make sure you have the basic dependencies installed on the target computer (i.e. iptables, apparmor).
   These are usually already installed in typical installations, but may be missing in some cases.
-* Supported architectures (*amd64, armhf, arm64, ppc64el, s390x*)
-* Supported distributive (*Ubuntu, Debian*)
+* Supported distributive (*Ubuntu, Debian, Centos*)
+* Supported architectures:
+  * Ubuntu - *amd64, arm64, armhf, ppc64el, s390x*
+  * Debian - *amd64, arm64, armhf*
+  * Centos - *x86_64*
 * An online computer (a.k.a *source*)
 * An offline / standalone computer (a.k.a *target*)
 * **sudo** (*root*) privileges on both *source* and *target* computers
@@ -38,7 +43,7 @@ Please check the console output for any warnings/errors that may occur during th
 3. cd into the relevant distribution directory of the scripts
    `cd Ubuntu`
 4. Run the download script with sudo: `sudo ./docker-download.sh`
-5. If all goes well, there should be gzip file named *docker_mirror.release.architecture.tar.gz* in the directory you ran the script from.
+5. If all goes well, there should be gzip file named *docker_offline.release.architecture.tar.gz* in the directory you ran the script from.
    Copy this file, **and** the *docker-install.sh* script to your media (i.e. cdrom, usb etc...)
    
 ### On the source (online) computer a auto mode using docker:
@@ -50,24 +55,25 @@ Please check the console output for any warnings/errors that may occur during th
 5. Uncomment what do you want downloaded, *RELEASE* and *ARCH* for your distributive.
 6. Run docker-compose for your distributive `docker-compose up -d --build ubuntu-docker-offline`
 7. Run `docker-compose logs -f` for view logs.
-8. If all goes well, there should be gzip file named *docker_mirror.release.architecture.tar.gz* in the directory your distributive.
+8. If all goes well, there should be gzip file named *docker_offline.release.architecture.tar.gz* in the directory your distributive.
    Copy this file, **and** the *docker-install.sh* script to your media (i.e. cdrom, usb etc...)
 
 ### On the target (offline) computer:
-1. Copy the *docker_mirror.release.architecture.tar.gz* and the *docker-install.sh* from the media to a writeable directory on the target.
+1. Copy the *docker_offline.release.architecture.tar.gz* and the *docker-install.sh* from the media to a writeable directory on the target.
 2. Run the install script with sudo: `sudo ./docker-install.sh` (no need to extract the gzip, the script will do it for you).
 3. If all goes well, Docker should be installed now. Test the installation by running: `docker ps`, you should get an empty list of running containers.
 
 That's it!
 
 ## Security
-These scripts copy Docker repository public key, so that the Release.gpg signature file can be verified 
+These scripts for Ubuntu, Debian copy Docker repository public key, so that the Release.gpg signature file can be verified 
 during the offline install, just like apt-get does when installing online.
 
 ## Testing with docker
 1. Test environment:
     * Ubuntu (14.04 amd64)
     * Debian (7.11 amd64)
+    * Centos (7 x86_64)
 2. cd into extract archive directory.
 3. There should already be an archive inside the directory for test environment.
 4. Run docker-compose for your distributive `docker-compose up -d --build ubuntu-test`

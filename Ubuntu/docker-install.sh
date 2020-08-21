@@ -5,7 +5,7 @@ trap 'error' ERR
 function print_info() {
   local status=("$@")
 
-  if test -t 1; then
+  if test -t 1 && [ -x "$(command -v tput)" ]; then
     bold=$(tput bold)
     reset=$(tput sgr0)
     red=$(tput setaf 1)
@@ -35,7 +35,7 @@ apt-get -y install lsb-release && echo "OK"
 
 release=$(lsb_release -cs)
 arch=$(dpkg --print-architecture)
-archive="docker_mirror.$release.$arch.tar.gz"
+archive="docker_offline.$release.$arch.tar.gz"
 
 print_info "Create a directory for mirrored repositories"
 

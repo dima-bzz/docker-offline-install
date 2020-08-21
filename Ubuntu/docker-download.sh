@@ -5,7 +5,7 @@ trap 'error' ERR
 function print_info() {
   local status=("$@")
 
-  if test -t 1; then
+  if test -t 1 && [ -x "$(command -v tput)" ]; then
     bold=$(tput bold)
     reset=$(tput sgr0)
     red=$(tput setaf 1)
@@ -37,7 +37,7 @@ fi
 
 release=${RELEASE:-$(lsb_release -cs)}
 arch=${ARCH:-$(dpkg --print-architecture)}
-archive="docker_mirror.$release.$arch.tar.gz"
+archive="docker_offline.$release.$arch.tar.gz"
 
 print_info "Get Docker's public key and add to apt"
 
