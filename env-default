@@ -1,0 +1,91 @@
+###########################################################
+###################### General Setup ######################
+###########################################################
+
+#### Ubuntu 14.04 ##################################
+#RELEASE=trusty
+#ARCH=amd64
+#ARCH=armhf
+
+#### Ubuntu 16.04 ##################################
+#RELEASE=xenial
+#ARCH=amd64
+#ARCH=arm64
+#ARCH=armhf
+#ARCH=ppc64el
+
+#### Ubuntu 16.10 ##################################
+#RELEASE=yakkety
+#ARCH=amd64
+#ARCH=armhf
+#ARCH=s390x
+
+#### Ubuntu 17.04 ##################################
+#RELEASE=zesty
+#ARCH=amd64
+#ARCH=arm64
+#ARCH=armhf
+#ARCH=ppc64el
+#ARCH=s390x
+
+#### Ubuntu 17.10 ##################################
+#RELEASE=artful
+#ARCH=amd64
+#ARCH=armhf
+#ARCH=ppc64el
+#ARCH=s390x
+
+#### Ubuntu 18.04 ##################################
+#RELEASE=bionic
+#ARCH=amd64
+#ARCH=arm64
+#ARCH=armhf
+#ARCH=ppc64el
+#ARCH=s390x
+
+#### Ubuntu 18.10 ##################################
+#RELEASE=cosmic
+#ARCH=amd64
+#ARCH=arm64
+#ARCH=armhf
+
+#### Ubuntu 19.04 ##################################
+#RELEASE=disco
+#ARCH=amd64
+#ARCH=arm64
+#ARCH=armhf
+
+#### Ubuntu 19.10 ##################################
+#RELEASE=eoan
+#ARCH=amd64
+#ARCH=arm64
+#ARCH=armhf
+
+#### Ubuntu 20.04 ##################################
+#RELEASE=focal
+#ARCH=amd64
+#ARCH=arm64
+#ARCH=armhf
+
+#### Debian 7.0 ##################################
+#RELEASE=wheezy
+#ARCH=amd64
+#ARCH=armhf
+
+#### Debian 8.0 ##################################
+#RELEASE=jessie
+#ARCH=amd64
+#ARCH=arm64
+#ARCH=armhf
+
+#### Debian 9.0 ##################################
+#RELEASE=stretch
+#ARCH=amd64
+#ARCH=arm64
+#ARCH=armhf
+
+#### Debian 10.0 ##################################
+#RELEASE=buster
+#ARCH=amd64
+#ARCH=arm64
+#ARCH=armhf

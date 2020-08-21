@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+
+#### Ubuntu ##################################
+    ubuntu-docker-offline:
+      build:
+        context: ./Ubuntu
+      environment:
+        RELEASE: ${RELEASE}
+        ARCH: ${ARCH}
+      volumes:
+      - ./Ubuntu:/home/docker
+
+#### Ubuntu test ##################################
+    ubuntu-test:
+      image: amd64/ubuntu:14.04
+      command: tail -f /dev/null
+      working_dir: /home/docker
+      volumes:
+      - ./Ubuntu:/home/docker
+
+#### Debian ##################################
+    debian-docker-offline:
+      build:
+        context: ./Debian
+      environment:
+        RELEASE: ${RELEASE}
+        ARCH: ${ARCH}
+      volumes:
+        - ./Debian:/home/docker
+
+#### Debian test ##################################
+    debian-test:
+      build:
+        context: ./Debian
+        dockerfile: ./test.Dockerfile
+      volumes:
+        - ./Debian:/home/docker
