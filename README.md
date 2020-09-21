@@ -1,4 +1,4 @@
-# docker-offline-install
+# Docker offline install
 Instructions and scripts for installing Docker Engine in an offline / standalone environment.
 
 This is useful for installing Docker engine on servers that don't or cannot have an internet connection.
